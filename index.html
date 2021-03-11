@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+
+<body>
+    <input type="text" class="name">
+    <input type="text" class="pwd">
+    <button>提交</button>
+    <script>
+        document.querySelectorAll('button')[0].addEventListener('click', submint, false)
+        function submint() {
+            $.ajax({
+                url: "http://localhost:3000/api/register",
+                type: 'post', 
+                data: {
+                    name: $(".name").val(),
+                    pwd: $(".pwd").val()
+                },
+                success: function () {
+
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
