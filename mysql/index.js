@@ -5,7 +5,7 @@ function db(sql, add = null, callback) {
         host: 'localhost',
         user: 'root',
         password: 'root',
-        database: 'node'
+        database: 'test'
     };
     var connection = mysql.createConnection(objHost);
     connection.connect();

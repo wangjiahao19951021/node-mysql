@@ -1,3 +1,7 @@
+# 启动关闭mysql服务
+net start mysql
+net stop mysql 
+
 # 启动mysql（已经配置好,cmd下）-u名字 -p密码
 mysql -uroot -proot
 
@@ -17,16 +21,23 @@ use 数据库名字;
 show tables;
 
 # 创建表 (DEFAULT '')默认为空 (AUTO_INCREMENT)自增 (PRIMARY KEY)主键 (COMMENT)备注
-CREATE TABLE IF NOT EXISTS `ceshi`(
+<!-- CREATE TABLE IF NOT EXISTS `ceshi`(
    `id` int(11) NOT NULL AUTO_INCREMENT,
    `name` char(10) NOT NULL DEFAULT '',
    `date` datetime NOT NULL,
    `singin` tinyint(4) NOT NULL DEFAULT '0' COMMENT '登录次数',
    PRIMARY KEY ( `id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8; -->
+
+CREATE TABLE IF NOT EXISTS `ceshi`(
+   `id` int(11) AUTO_INCREMENT,
+   `author` VARCHAR(100),
+   `count` VARCHAR(100),
+   PRIMARY KEY ( `id` )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 # 添加数据
-INSERT INTO `ceshi` VALUES ('1', '小明', '2016-04-22 15:25:33', '1'), ('2', '小王', '2016-04-20 15:25:47', '3'), ('3', '小丽', '2016-04-19 15:26:02', '2'), ('4', '小王', '2016-04-07 15:26:14', '4'), ('5', '小明', '2016-04-11 15:26:40', '4'), ('6', '小明', '2016-04-04 15:26:54', '2');
-
+<!-- INSERT INTO `ceshi` VALUES ('1', '小明', '2016-04-22 15:25:33', '1'), ('2', '小王', '2016-04-20 15:25:47', '3'), ('3', '小丽', '2016-04-19 15:26:02', '2'), ('4', '小王', '2016-04-07 15:26:14', '4'), ('5', '小明', '2016-04-11 15:26:40', '4'), ('6', '小明', '2016-04-04 15:26:54', '2'); -->
+INSERT INTO ceshi (author, count) VALUES ('小明', '1');
 # 读取某个表中所有数据
 select * from 表名;
 # 查询某个字段的数据
@@ -49,6 +60,9 @@ delete from users where id = '6';
 
 # 清空表内容
 truncate table users;
+
+# 删除表
+drop table users;
 
 # 更新users表中某条数据的操作
 update users set user = '王' where id = 5;
